@@ -1,0 +1,32 @@
+body {
+    font-family: Tahoma;
+    font-size: 40px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    min-width: 720px;
+}
+
+#container :last-child {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.box {
+    background-color: #eeeff2;
+    width: 100px;
+    height: 150px;
+    border-left: 10px dotted #D0D0FF;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.box:hover {
+    background-color: yellow;
+    color: goldenrod;
+    cursor: pointer;
+}
+

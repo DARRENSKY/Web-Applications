@@ -1,0 +1,31 @@
+body {
+    font-family: Tahoma;
+    font-size: 40px;
+}
+
+#container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    border: 2px solid white;
+    box-shadow: 5px 10px 8px #888;
+    text-align: center;
+    vertical-align: center;
+    line-height: 100px;
+    transition: width 1s, height 1s, line-height 1s, border-top 1s;
+}
+
+.box:hover {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-top: 0.1px solid #ccc;
+}
+

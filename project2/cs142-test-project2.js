@@ -11,6 +11,8 @@
 var cs142MakeMultiFilter;
 var Cs142TemplateProcessor;
 
+/* Anonymous function to create private namespace. */
+(function() {
 
 // Result message for Problems 1-3
 var p1Message = 'SUCCESS';
@@ -19,8 +21,6 @@ var p3Message = 'SUCCESS';
 
 // Keep track of all the var statements
 var varDeclared = ['varDeclared', 'p1Message', 'p2Message', 'p3Message'];
-
-
 
 // ********************* Test cs142filter
 
@@ -164,3 +164,6 @@ window.onload = function () {
     document.getElementById("cs142p2").innerHTML = p2Message;
     document.getElementById("cs142p3").innerHTML = p3Message;
 };
+
+})();
+

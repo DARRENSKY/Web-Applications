@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 /* -------------------- Cs142TemplateProcessor Constructor -------------------- */
 function Cs142TemplateProcessor(template) {
@@ -12,4 +12,4 @@ Cs142TemplateProcessor.prototype.fillIn = function(dictionary) {
     return this.template.replace(/{{[^}]*}}/g, function(match) { 
         return dictionary[match.slice(2, -2)] ? dictionary[match.slice(2, -2)] : "";
     });
-}
+};

@@ -11,12 +11,12 @@ function cs142MakeMultiFilter(originalArray) {
         }
         for (let i = currentArray.length - 1; i >= 0; i--) {
             if (!filterCriteria(currentArray[i])) {
-                currentArray.splice(i, 1)
+                currentArray.splice(i, 1);
             }
         }
         if (typeof(callback) === "function") {
-            callback.call(originalArray, currentArray)
+            callback.call(originalArray, currentArray);
         }
         return arrayFilterer;
-    }
+    };
 }

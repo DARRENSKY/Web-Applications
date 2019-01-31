@@ -15,13 +15,24 @@ DatePicker.prototype.render = function(date) {
     // Makes header of datepicker
     datepicker.innerHTML = "\
         <div class='datepicker-header'>\
-            <button>&#8249;</button>" + 
+            <button onclick='" + this + ".render(" + nextDate + ")'>&#8249;</button>" + 
             month(date) + " " + date.getFullYear() + 
             "<button>&#8250;</button>\
         </div>\
         <div class='days-of-week'>" + 
             daysOfWeek() + 
         "</div>";
+
+    // Makes header of datepicker
+    // datepicker.innerHTML = "\
+    //     <div class='datepicker-header'>\
+    //         <button>&#8249;</button>" + 
+    //         month(date) + " " + date.getFullYear() + 
+    //         "<button>&#8250;</button>\
+    //     </div>\
+    //     <div class='days-of-week'>" + 
+    //         daysOfWeek() + 
+    //     "</div>";
 
     datepicker.innerHTML += "<div class='week'>" + populateInitialWeek(date) + "</div>";
     let currDay = 8 - date.getDay();

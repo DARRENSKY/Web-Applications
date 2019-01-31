@@ -1,0 +1,52 @@
+:root {
+    --row-width: 300px;
+    --cell-width: 42.857px; /* row-width / 7 */
+}
+
+#datepicker1 {
+    display: flex;
+    flex-direction: column;
+    width: var(--row-width);
+}
+
+#datepicker2 {
+    display: flex;
+    flex-direction: column;
+    width: var(--row-width);
+}
+
+.datepicker-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.days-of-week {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.day-header {
+    width: var(--cell-width);
+    text-align: center;
+}
+
+.week {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
+
+.day {
+    width: var(--cell-width);
+    text-align: center;
+}
+
+.other-day {
+    width: var(--cell-width);
+    text-align: center;
+    color: rgb(160, 160, 160);
+}

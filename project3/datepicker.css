@@ -1,6 +1,8 @@
 :root {
     --row-width: 300px;
     --cell-width: 42.857px; /* row-width / 7 */
+    --button-width: 75px;   /* row-width / 4 */
+    --title-width: 150px;   /* row-width / 2 */
 }
 
 #datepicker1 {
@@ -53,4 +55,14 @@
 
 a:hover {
     cursor: pointer;
+}
+
+a {
+    width: var(--button-width);
+    text-align: center;
+}
+
+.title {
+    width: var(--title-width);
+    text-align: center;
 }

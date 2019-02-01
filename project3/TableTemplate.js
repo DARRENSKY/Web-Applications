@@ -19,12 +19,14 @@ class TableTemplate {
             // Finds if a column with the name given by columnName exists; returns immediately if nonexistant.
             let columnIndex = -1;
             for (let i = 0; i < header.cells.length; i++) {
-                if (header.cells[i].textContent == columnName) {
+                if (header.cells[i].textContent === columnName) {
                     columnIndex = i;
                     break;
                 }
             }
-            if (columnIndex == -1) return;
+            if (columnIndex === -1) {
+                return;
+            }
 
             // Replaces text of form {{property}} in column specified by columnName with its corresponding value from dict.
             let rows = table.rows;

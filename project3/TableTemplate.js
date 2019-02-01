@@ -1,11 +1,11 @@
 "use strict";
 
 /* ----------------------------- TableTemplate ----------------------------- */
-/*  @param id = id tag for an HTML table                                     */
-/*  @param dict = dictionary with properties to be replaced                  */
-/*  @param columnName = specifies a column whose cells' values will be       */
-/*     replaced by fillIn method. If empty, fillIn replaces all cells'       */
-/*     values.                                                               */
+/*  @param id: [string] ID tag for an HTML table                             */
+/*  @param dict: [dictionary] Contains properties to be replaced.            */
+/*  @param columnName: [string] Specifies a column whose cells' values will  */ 
+/*    be replaced by fillIn method. If empty, fillIn replaces all cells'     */
+/*    values.                                                                */
 class TableTemplate { 
     static fillIn(id, dict, columnName) {
         // Replaces text of the form {{property}} with corresponding value from dict.

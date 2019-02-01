@@ -62,34 +62,10 @@ DatePicker.prototype.render = function(date) {
     /*  @use: Adds EventListeners to all the cells of the DatePicker,      */ 
     /*    creating an onclick event that calls dateSelection.              */
     var addCellEventListeners = function(_this) {
-        let prevMonthStartingDay = getDaysInMonth(_this.date.getFullYear(), _this.date.getMonth() - 1) - _this.date.getDay() + 1;
-        let prevMonth = _this.date.getMonth() === 0 ? 12 : _this.date.getMonth();
-        let prevYear = _this.date.getMonth() === 0 ? _this.date.getFullYear() - 1 : _this.date.getFullYear();
-        let numDaysInPrevMonth = getDaysInMonth(_this.date.getFullYear(), _this.date.getMonth() - 1);
         let numDaysInCurrMonth = getDaysInMonth(_this.date.getFullYear(), _this.date.getMonth());
-        let daysSoFar = (numDaysInPrevMonth - prevMonthStartingDay + 1) + numDaysInCurrMonth; 
-        let nextMonth = _this.date.getMonth() === 11 ? 0 : _this.date.getMonth() + 2;
-        let nextYear = _this.date.getMonth() === 11 ? _this.date.getFullYear() + 1 : _this.date.getFullYear();
-        let numDaysInNextMonth = daysSoFar % 7 === 0 ? 0 : (7 - (daysSoFar % 7));
-
-        // Set EventListeners for cells of previous month.
-        for (let i = prevMonthStartingDay; i <= numDaysInPrevMonth; i++) {
-            document.getElementById(_this.id + "-other-day" + i).addEventListener("click", function () {
-                _this.dateSelection(_this.id, {day: i, month: prevMonth, year: prevYear});
-            });
-        }
-
-        // Set EventListeners for cells of current month.
         for (let i = 1; i <= numDaysInCurrMonth; i++) {
             document.getElementById(_this.id + "-day" + i).addEventListener("click", function () {
                 _this.dateSelection(_this.id, {day: i, month: _this.date.getMonth() + 1, year: _this.date.getFullYear()});
-            });
-        }
-
-        // Set EventListeners for cells of next month.
-        for (let i = 1; i <= numDaysInNextMonth; i++) {
-            document.getElementById(_this.id + "-other-day" + i).addEventListener("click", function () {
-                _this.dateSelection(_this.id, {day: i, month: nextMonth, year: nextYear});
             });
         }
     };
@@ -104,7 +80,7 @@ DatePicker.prototype.render = function(date) {
         let prevMonthDay = getDaysInMonth(date.getFullYear(), date.getMonth() - 1) - date.getDay() + 1;
         for (let i = 0; i < 7; i++) {
             if (prevMonthDay <= numDaysInPrevMonth) {
-                week += "<div class='other-day'><a id='" + id + "-other-day" + prevMonthDay + "'>" + prevMonthDay + "</a></div>";
+                week += "<div class='other-day'>" + prevMonthDay + "</div>";
                 prevMonthDay++;
             } else {
                 week += "<div class='day'><a id='" + id + "-day" + currDay + "'>" + currDay + "</a></div>";
@@ -121,7 +97,7 @@ DatePicker.prototype.render = function(date) {
         let week = "";
         for (let i = 0; i < 7; i++) {
             if (currDay > numDaysInCurrMonth) {
-                week += "<div class='other-day'><a id='" + _this.id + "-other-day" + (currDay - numDaysInCurrMonth) + "'>" + (currDay - numDaysInCurrMonth) + "</a></div>";
+                week += "<div class='other-day'>" + (currDay - numDaysInCurrMonth) + "</div>";
             } else {
                 week += "<div class='day'><a id='" + _this.id + "-day" + currDay + "'>" + currDay + "</a></div>";
             }

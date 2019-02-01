@@ -15,46 +15,63 @@ DatePicker.prototype.render = function(date) {
     // Makes header of datepicker
     datepicker.innerHTML = "\
         <div class='datepicker-header'>\
-            <button onclick='" + this + ".render(" + nextDate + ")'>&#8249;</button>" + 
+            <button class='back-button'>&#8249;</button>" + 
             month(date) + " " + date.getFullYear() + 
-            "<button>&#8250;</button>\
+            "<button class='forward-button'>&#8250;</button>\
         </div>\
         <div class='days-of-week'>" + 
             daysOfWeek() + 
         "</div>";
 
-    // Makes header of datepicker
-    // datepicker.innerHTML = "\
-    //     <div class='datepicker-header'>\
-    //         <button>&#8249;</button>" + 
-    //         month(date) + " " + date.getFullYear() + 
-    //         "<button>&#8250;</button>\
-    //     </div>\
-    //     <div class='days-of-week'>" + 
-    //         daysOfWeek() + 
-    //     "</div>";
-
-    datepicker.innerHTML += "<div class='week'>" + populateInitialWeek(date) + "</div>";
+    // let self = this;
+    // document.getElementsByClassName("back-button")[0].addEventListener("click", function () {
+    //     self.render(getNextDate(date));
+    // });
+    // document.getElementsByClassName("forward-button")[0].addEventListener("click", function () {
+    //     self.render(getPreviousDate(date));
+    // });
+    
+    // Makes body of datepicker
+    datepicker.innerHTML += "<div class='week'>" + populateInitialWeek(date, this.id, this.dateSelection) + "</div>";
     let currDay = 8 - date.getDay();
-    let numDaysInCurrMonth = getDaysInMonth(date.getMonth());
+    let numDaysInCurrMonth = getDaysInMonth(date.getFullYear(), date.getMonth());
     while (currDay <= numDaysInCurrMonth) {
-        datepicker.innerHTML += "<div class='week'>" + populateWeek(currDay, numDaysInCurrMonth) + "</div>";
+        datepicker.innerHTML += "<div class='week'>" + populateWeek(this.id, this.dateSelection, date, currDay, numDaysInCurrMonth) + "</div>";
         currDay += 7;
     }
+
+    addEventListeners(this.id, date);
 };
 
+function addEventListeners(id, date) {
+    for (let i = 1; i <= getDaysInMonth(date.getFullYear(), date.getMonth()); i++) {
+        console.log(document.getElementById(id + "-day" + i));
+    }
+}
+
+/* Returns a date object with the next month. */
+function getNextDate(date) {
+    return new Date(date.getMonth() === 11 ? date.getFullYear() + 1 : date.getFullYear(), date.getMonth() === 11 ? 0 : date.getMonth() + 1);
+}
+
+/* Returns a date object with the previous month. */
+function getPreviousDate(date) {
+    return new Date(date.getMonth() === 0 ? date.getFullYear() - 1 : date.getFullYear(), date.getMonth() === 0 ? 11 : date.getMonth() - 1);
+}
+
 /* Populates the first row of the datepicker with date numbers. */
-function populateInitialWeek(date) {
-    let week = "";
+function populateInitialWeek(date, id, dateSelection) {
+    let week = ""
     let currDay = 1;
-    let numDaysInPrevMonth = getDaysInMonth(date.getMonth() - 1);
-    let prevMonthDay = getDaysInMonth(date.getMonth() - 1) - date.getDay() + 1;
+    let numDaysInPrevMonth = getDaysInMonth(date.getFullYear(), date.getMonth() - 1);
+    let prevMonthDay = getDaysInMonth(date.getFullYear(), date.getMonth() - 1) - date.getDay() + 1;
     for (let i = 0; i < 7; i++) {
         if (prevMonthDay <= numDaysInPrevMonth) {
             week += "<div class='other-day'>" + prevMonthDay + "</div>";
             prevMonthDay++;
         } else {
-            week += "<div class='day'>" + currDay + "</div>";
+            // week += "<div class='day'>" + currDay + "</div>";
+            week += "<div class='day'><a id='" + id + "-day" + currDay + "'>" + currDay + "</a></div>";
             currDay++;
         }
     }
@@ -62,13 +79,13 @@ function populateInitialWeek(date) {
 }
 
 /* Populates a row of the datepicker with date numbers. */
-function populateWeek(currDay, numDaysInCurrMonth) {
+function populateWeek(id, dateSelection, date, currDay, numDaysInCurrMonth) {
     let week = "";
     for (let i = 0; i < 7; i++) {
         if (currDay > numDaysInCurrMonth) {
             week += "<div class='other-day'>" + (currDay - numDaysInCurrMonth) + "</div>";
         } else {
-            week += "<div class='day'>" + currDay + "</div>";
+            week += "<div class='day'><a id='" + id + "-day" + currDay + "'>" + currDay + "</a></div>";
         }
         currDay++;
     }
@@ -85,21 +102,12 @@ function daysOfWeek() {
 }
 
 /* Returns the number of days in the month given by DATE. */
-function getDaysInMonth(month) {
-    if (month < 0) month = 11;
-    if (month === 1) return date.getFullYear() % 4 === 0 ? 29 : 28;
-    switch (month) {
-        case 0: 
-        case 2:
-        case 4:
-        case 6:
-        case 7:
-        case 9:
-        case 11:
-            return 31;
-        default: 
-            return 30;
+function getDaysInMonth(year, month) {
+    if (month < 0) {
+        month = 11;
+        year -= 1;
     }
+    return new Date(year, month + 1, 0).getDate();
 }
 
 /* Returns the string representation of the month given by DATE. */

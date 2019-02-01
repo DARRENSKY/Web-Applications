@@ -50,3 +50,7 @@
     text-align: center;
     color: rgb(160, 160, 160);
 }
+
+a:hover {
+    cursor: pointer;
+}

@@ -84,6 +84,7 @@ DatePicker.prototype.render = function(date) {
                 prevMonthDay++;
             } else {
                 week += "<div class='day'><a id='" + id + "-day" + currDay + "'>" + currDay + "</a></div>";
+                // week += "<div class='day'><button id='" + id + "-day" + currDay + "'>" + currDay + "</button></div>";
                 currDay++;
             }
         }

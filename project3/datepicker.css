@@ -33,6 +33,7 @@
 .day-header {
     width: var(--cell-width);
     text-align: center;
+    border-bottom: 1px solid black;
 }
 
 .week {
@@ -45,6 +46,10 @@
 .day {
     width: var(--cell-width);
     text-align: center;
+}
+
+.day:hover {
+    background-color: lightblue;
 }
 
 .other-day {

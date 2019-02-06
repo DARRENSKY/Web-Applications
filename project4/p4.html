@@ -4,6 +4,7 @@
     <title>{{main.title || "CS142 Class Project"}}</title>
     <script src="node_modules/angular/angular.js"></script>
     <script src="mainController.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css" />
 
     <script src="components/header/headerController.js"></script>
@@ -21,9 +22,13 @@
   <body>
     <div ng-include="'components/header/headerTemplate.html'" ng-controller="HeaderController"></div>
     <div class="cs142-p4-button-container">
-        <button class="cs142-p4-button" ng-click="switchViews()">Switch to {{main.hiddenView}}</button>
+      <button class="cs142-p4-button" ng-click="switchViews()">Switch to {{main.hiddenView}}</button>
     </div>
-    <div id="cs142-p4-example-view" ng-include="'components/example/exampleTemplate.html'" ng-controller="ExampleController"></div>
-    <div id="cs142-p4-states-view" ng-include="'components/states/statesTemplate.html'" ng-controller="StatesController"></div>
+    <div ng-if="main.hiddenView == 'Example'">
+      <div ng-include="'components/states/statesTemplate.html'" ng-controller="StatesController"></div>
+    </div>
+    <div ng-if="main.hiddenView == 'States'">
+      <div ng-include="'components/example/exampleTemplate.html'" ng-controller="ExampleController"></div>
+    </div>
   </body>
 </html>

@@ -27,3 +27,20 @@ cs142App.controller('MainController', ['$scope', function($scope) {
       $scope.main.title = $scope.main.hiddenView == 'States' ? 'CS142 Project #4 - Example' : 'CS142 Project #4 - States';
    };
 }]);
+
+
+cs142App.config(['$routeProvider',
+   function($routeProvider) {
+      $routeProvider.
+         when('/example', {
+            templateUrl: 'components/example/exampleTemplate.html',
+            controller: 'ExampleController'
+         }).
+         when('/states', {
+            templateUrl: 'components/states/statesTemplate.html',
+            controller: 'StatesController'
+         }).
+         otherwise({
+            redirectTo: '/example'
+         });
+}]);

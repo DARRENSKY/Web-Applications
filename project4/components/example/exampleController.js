@@ -18,8 +18,6 @@ cs142App.controller('ExampleController', ['$scope', function($scope) {
    // will include this view's name "Example".
    if ($scope.main) {
       $scope.main.title = 'CS142 Project #4 - Example';
-      // $scope.main.name = window.cs142models.exampleModel().name;
-      // $scope.main.motto = window.cs142models.exampleModel().motto;
    }
 
    $scope.main.name = window.cs142models.exampleModel().name;

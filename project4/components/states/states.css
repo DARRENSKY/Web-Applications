@@ -20,6 +20,7 @@ body {
 
 .cs142-states-input {
     padding-top: 50px;
+    padding-right: 120px;
     width: 50%;
     height: 100px;
     min-width: 500px;

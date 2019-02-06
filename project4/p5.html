@@ -22,9 +22,9 @@
   <body>
     <div ng-include="'components/header/headerTemplate.html'" ng-controller="HeaderController"></div>
     <div class="cs142-p4-button-container">
-        <button class="cs142-p4-button" ng-click="switchViews()">Switch to {{main.hiddenView}}</button>
+      <a href="#!example" class="cs142-p4-button">Example</a>
+      <a href="#!states" class="cs142-p4-button">States</a> 
     </div>
-    <div id="cs142-p4-states-view" ng-include="'components/states/statesTemplate.html'" ng-controller="StatesController"></div>
-    <div id="cs142-p4-example-view" ng-include="'components/example/exampleTemplate.html'" ng-controller="ExampleController"></div>
+    <div ng-view></div>
   </body>
 </html>

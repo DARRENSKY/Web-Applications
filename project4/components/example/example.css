@@ -24,3 +24,21 @@ you use won't conflict with these names.
     border: 1px dashed #722b00;
     display: inline-block;
 }
+
+.cs142-example-motto-button {
+    background-color: #ADEF;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 5px;
+    text-decoration: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.cs142-example-motto-button:hover {
+    opacity: 1;
+}

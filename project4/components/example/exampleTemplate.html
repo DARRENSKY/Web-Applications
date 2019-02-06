@@ -2,7 +2,13 @@
     <h1>CS142 Project#4 Angular Example</h1>
 
     <!-- Problem #1 motto updating widget -->
-    <div class="motto-update" ng-include="'components/example/exampleMotto.html'" ng-controller="ExampleController"></div>
+    <div class="motto-update">
+        <label class="cs142-example-output">You can change the motto here: 
+            <input type="text" ng-model="example.mottoInput">
+        </label>
+        <button class="cs142-example-motto-button" ng-click="switchMotto(example.mottoInput)">Change Motto</button>
+        <button class="cs142-example-motto-button" ng-click="resetMotto()">Reset Motto</button>
+    </div>
 
     <p>This page is an example of Angular view template processing. It runs with the controller
         located in <code>components/example/exampleController.js</code>. It looks like standard

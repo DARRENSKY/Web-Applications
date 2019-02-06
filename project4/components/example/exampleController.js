@@ -18,7 +18,12 @@ cs142App.controller('ExampleController', ['$scope', function($scope) {
    // will include this view's name "Example".
    if ($scope.main) {
       $scope.main.title = 'CS142 Project #4 - Example';
+      // $scope.main.name = window.cs142models.exampleModel().name;
+      // $scope.main.motto = window.cs142models.exampleModel().motto;
    }
+
+   $scope.main.name = window.cs142models.exampleModel().name;
+   $scope.main.motto = window.cs142models.exampleModel().motto;
 
    /*
     *  The view template accesses there properties:
@@ -48,25 +53,18 @@ cs142App.controller('ExampleController', ['$scope', function($scope) {
    };
 
    /*
-    * name - We read the example model data into the scope variable 'name'
+    * Stores variable properties that are used in the example template.
     */
-   $scope.name = window.cs142models.exampleModel().name;
-
-   /*
-    * motto: initially stores the example model data, can be changed using text input field
-    */
-   $scope.main.motto = window.cs142models.exampleModel().motto;
-
-   /*
-    * mottoInput: stores value typed into input field
-    */
-   $scope.mottoInput = '';
+   $scope.example = {
+      mottoInput: '',
+   }
 
    /*
     * switchMotto: changes motto by assigning value from text input field 
     */
    $scope.switchMotto = function(newMotto) {
       $scope.main.motto = newMotto;
+      $scope.example.mottoInput = '';
    };
 
    /*
@@ -74,5 +72,6 @@ cs142App.controller('ExampleController', ['$scope', function($scope) {
     */
    $scope.resetMotto = function() {
       $scope.main.motto = window.cs142models.exampleModel().motto;
+      $scope.example.mottoInput = '';
    };
 }]);

@@ -5,39 +5,32 @@
  */
 
 cs142App.controller('StatesController', ['$scope', function($scope) {
-
-   // Replace this with the code for CS142 Project #4, Problem #2
-   // console.log('window.cs142models.statesModel()', JSON.stringify(window.cs142models.statesModel()));
-
    if ($scope.main) {
       $scope.main.title = 'CS142 Project #4 - States';
    }
 
    /*
-    * Stores original list of states.
+    * This object contains any variables that change throughout use.
     */
-   $scope.states = window.cs142models.statesModel().sort();
+   $scope.states = {
+      // Stores original list of states.
+      allStates: window.cs142models.statesModel().sort(),
 
-   /*
-    * Keeps track of which states are currently displayed. 
-    */
-   $scope.visibleStates = $scope.states;
+      // Keeps track of which states are currently visible.
+      visibleStates: window.cs142models.statesModel().sort(),
 
-   /* 
-    * Keeps track of input field value.
-    */
-   $scope.inputString = '';
+      // Keeps track of input field value.
+      inputString: '',
 
-   /* 
-    * Keeps track of the substring used to filter the states.
-    */
-   $scope.substring = '';
+      // Keeps track of the substring used to filter the states.
+      substring: '',
+   };
 
    /* 
     * Filters out states that don't contain the parameter as a substring.
     */
    $scope.filterStates = function(substring) {
-      $scope.visibleStates = substring ? $scope.states.filter(state => state.toLowerCase().includes(substring.toLowerCase())) : $scope.states; 
-      $scope.substring = substring;
+      $scope.states.visibleStates = substring ? $scope.states.allStates.filter(state => state.toLowerCase().includes(substring.toLowerCase())) : $scope.states.allStates; 
+      $scope.states.substring = substring;
    }
 }]);

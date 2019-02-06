@@ -4,21 +4,21 @@ CSS for the CS142 project #4 Problem #2 states component
 Since CSS uses a global name space for classes we should use names starting with
 cs142-states- here.
 */
-div {
+body {
     font-family: Arial;
 }
 
-#cs142-states {
+.cs142-states {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#cs142-states-header h1 {
+.cs142-states-header h1 {
     border-bottom: 2px solid black;
 }
 
-#cs142-states-input {
+.cs142-states-input {
     padding-top: 50px;
     width: 50%;
     height: 100px;
@@ -26,7 +26,7 @@ div {
     text-align: center;
 }
 
-#cs142-states-input-field {
+.cs142-states-input-field {
     width: 250px;
     border: none;
     border-bottom: 2px solid black;
@@ -38,11 +38,11 @@ div {
     font-size: 25px;
 }
 
-#cs142-states-input-field:focus {
+.cs142-states-input-field:focus {
     border-bottom: 2px solid grey;
 }
 
-#cs142-states-search {
+.cs142-states-search {
     background-color: #F4511e;
     border: none;
     color: white;
@@ -56,10 +56,18 @@ div {
     transition: 0.3s;
 }
 
-#cs142-states-search:hover {
+.cs142-states-search:hover {
     opacity: 1;
 }
 
-#cs142-states-results {
+.cs142-states-results {
+}
 
+.cs142-states-substring {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.cs142-states-elements {
+    margin-left: 25px;
 }

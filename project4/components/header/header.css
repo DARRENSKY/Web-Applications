@@ -1,0 +1,20 @@
+.cs142-header-container {
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.cs142-header-name {
+    color: black;
+    font-family: 'American Typewriter';
+    font-size: 60px;
+    text-align: right;
+    margin: 0px 60px 20px 60px;
+}
+
+.cs142-header-image {
+    width: 300px;
+}
+

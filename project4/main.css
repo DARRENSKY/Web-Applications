@@ -1,0 +1,15 @@
+/*
+ *  Problem 1: header styles
+ */
+#cs142-header-name-container {
+    text-align: center;
+    font-family: Arial;
+    font-size: 30px;
+    border-bottom: 10px solid white;
+}
+
+#cs142-header-motto-container {
+    text-align: center;
+    font-family: Arial;
+    font-size: 20px;
+}

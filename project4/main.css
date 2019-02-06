@@ -13,3 +13,35 @@
     font-family: Arial;
     font-size: 20px;
 }
+
+.cs142-p4-button-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.cs142-p4-button {
+    background-color: #F4511e;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 5px;
+    text-decoration: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.cs142-p4-button:hover {
+    opacity: 1;
+}
+
+#cs142-p4-example-view {
+    display: block;
+}
+
+#cs142-p4-states-view {
+    display: none;
+}

@@ -1,2 +1,24 @@
 <!--Replaced this with the Angular template for states component of CS142 Project #4
     Problem #2.-->
+
+<div id="cs142-states">
+    <div id="cs142-states-header">
+        <h1>States Filterer</h1>
+    </div>
+    <div id="cs142-states-input">
+        <text>Type a substring to search for:</text>
+        <input id = "cs142-states-input-field" type="text" ng-model="inputString">
+        <button id = "cs142-states-search" ng-click="filterStates(inputString)">Search</button>
+    </div>
+    <div id="cs142-states-results">
+        <div id="cs142-states-substring">
+            <text>Search criteria: "{{substring}}"</text>
+        </div>
+        <div ng-if="visibleStates.length === 0">
+            <text>No results :(</text>
+        </div>
+        <li ng-repeat="state in visibleStates">
+            <text>{{state}}</text>
+        </li>
+    </div>
+</div>

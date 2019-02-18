@@ -1,0 +1,8 @@
+.cs142-main-header {
+    font-family: Arial;
+    margin: 20px 30px 20px 30px;
+}
+
+.cs142-main-header-filler {
+    flex: 1 1 auto;
+}

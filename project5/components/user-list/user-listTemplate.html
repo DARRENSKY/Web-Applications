@@ -1,0 +1,7 @@
+<div id="user-list-container">
+    <div ng-repeat="user in users.list" class="user-list-user">
+        <a ng-href="#!users/{{user._id}}" class="user-list-button">
+            {{ user.first_name }} {{ user.last_name }}
+        </a>
+    </div>
+</div>

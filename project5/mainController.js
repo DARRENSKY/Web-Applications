@@ -29,4 +29,21 @@ cs142App.controller('MainController', ['$scope', function ($scope) {
         currentView: '',
         currentUser: '',
     };
+
+    /*
+      * FetchModel - Fetch a model from the web server.
+      *   url - string - The URL to issue the GET request.
+      *   doneCallback - function - called with argument (model) when the
+      *                  the GET request is done. The argument model is the
+      *                  objectcontaining the model. model is undefined in
+      *                  the error case.
+      */
+    $scope.FetchModel = function(url, doneCallback) {
+        let request = new XMLHttpRequest();
+        request.addEventListener("load", function() {
+            doneCallback(request);
+        });
+        request.open("GET", url);
+        request.send();
+    };
 }]);

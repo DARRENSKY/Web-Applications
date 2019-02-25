@@ -1,0 +1,14 @@
+<div id="user-photos-container">
+    <div ng-repeat="photo in photos.list" class="user-photos-post">
+        <div class="user-photos-photo">
+            <img ng-src="./images/{{photo.file_name}}"/>
+        </div>
+        <text>Posted: {{ getDate(photo.date_time) }}</text>
+        <div ng-repeat="comment in photo.comments" class="user-photos-comment">
+            <a ng-href="#!users/{{comment.user._id}}">{{ getUserName(comment) }}</a>
+            <text>{{ comment.comment }}</text>
+            <text>
+  {{ getDate(comment.date_time) }}</text>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-var cs142App = angular.module('cs142App', ['ngRoute', 'ngMaterial']);
+var cs142App = angular.module('cs142App', ['ngRoute', 'ngMaterial', 'ngResource']);
 
 cs142App.config(['$routeProvider',
     function ($routeProvider) {
@@ -22,7 +22,7 @@ cs142App.config(['$routeProvider',
             });
     }]);
 
-cs142App.controller('MainController', ['$scope', function ($scope) {
+cs142App.controller('MainController', ['$scope', '$resource', function ($scope, $resource) {
     $scope.main = {
         title: 'Users',
         userName: 'Austin Jones',
@@ -30,29 +30,9 @@ cs142App.controller('MainController', ['$scope', function ($scope) {
         currentUser: '',
     };
 
-    /*
-      * FetchModel - Fetch a model from the web server.
-      *   url - string - The URL to issue the GET request.
-      *   doneCallback - function - called with argument (model) when the
-      *                  the GET request is done. The argument model is the
-      *                  objectcontaining the model. model is undefined in
-      *                  the error case.
-      */
-    $scope.FetchModel = function(url, doneCallback) {
-        let request = new XMLHttpRequest();
-        request.addEventListener("load", function() {
-            doneCallback(request);
-        });
-        request.open("GET", url);
-        request.send();
-    };
-
-    let getVersion = function(response) {
-        let version = JSON.parse(response.responseText);
-        $scope.$apply(function() {
-            $scope.main.version = version.__v;
-        });
-        console.log($scope.main.version);
-    };
-    $scope.FetchModel('/test/info', getVersion);
+    /* Pull info from db */
+    var Info = $resource('/test/info');
+    Info.get({}).$promise.then(function(info) {
+        $scope.main.version = info.__v;
+    });
 }]);

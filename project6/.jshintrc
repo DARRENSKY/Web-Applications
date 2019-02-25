@@ -24,7 +24,7 @@
 
 
     // ECMAScript 5.
-    "esversion": 6,
+    "esversion": 8,
     "globalstrict"  : true,  // Allow global "use strict" (also enables 'strict').
     "strict": false,         // For this project with run with global strict so don't require local
 

@@ -1,0 +1,48 @@
+div {
+    font-family: Arial;
+    font-size: 18px;
+    color: #313131;
+}
+
+#user-photos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.user-photos-post {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+    width: 600px;
+}
+
+.user-photos-photo > img {
+    height: 350px;
+}
+
+.user-photos-post > text {
+    margin: 20px 0px 20px 0px;
+}
+
+.user-photos-comment {
+    margin-bottom: 8px;
+}
+
+.user-photos-comment > a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #313131;
+    transition: 0.4s;
+}
+
+.user-photos-comment > a:hover {
+    color: #555555;
+}
+
+.user-photos-comment > text:nth-child(3) {
+    color: #6C6C6C;
+    font-size: 15px;
+    white-space: pre;
+}

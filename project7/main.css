@@ -1,0 +1,33 @@
+.cs142-main-header-left {
+    font-family: Arial;
+    margin: 20px 0px 20px 30px;
+    width: 15%;
+}
+
+.cs142-main-header-right {
+    font-family: Arial;
+    margin: 20px 30px 20px 0px;
+    width: 20%;
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.cs142-main-header-filler {
+    display: flex;
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    font-size: 26px;
+}
+
+.cs142-main-logout {
+    font-size: 16px;
+    height: 30px;
+    align-self: center;
+    transition-duration: 0.3s;
+}
+
+.cs142-main-logout:hover {
+    opacity: 0.7;
+}

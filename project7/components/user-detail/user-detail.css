@@ -1,0 +1,65 @@
+div {
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.user-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 50px 0px 50px;
+}
+
+.user-detail-header {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    min-width: 1000px;
+}
+
+.user-detail-photo {
+    height: 250px;
+}
+
+.user-detail-information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.user-detail-information-container > text {
+    margin-bottom: 10px;
+}
+
+.user-detail-information-container > :first-child {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.user-detail-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 50px 50px 0px 50px;
+}
+
+.user-detail-photo-button {
+    width: 130px;
+    background-color: #3F51B5;
+    color: #E0E0E0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;    
+    padding: 12px 0px 12px 0px;
+    margin-top: 30px;
+    opacity: 0.8;
+    transition: 0.4s;
+}
+
+.user-detail-photo-button:hover {
+    opacity: 1;
+    color: #FFFFFF;
+}

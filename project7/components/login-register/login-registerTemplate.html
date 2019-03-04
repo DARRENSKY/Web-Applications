@@ -1,0 +1,16 @@
+<div class="login-register-container">
+    <div class="login-register-login-container">
+        <text id="login-register-welcome">Welcome Back</text>
+        <text>Please Sign In</text>
+        <input ng-model="log.loginName" class="login-register-input" placeholder="Username" />
+        <input ng-model="log.password" class="login-register-input" placeholder="Password" type="password" /> 
+        <button ng-click="login()" class="login-register-button">Login</button>
+    </div>
+    <div class="login-register-register-container">
+        <text id="login-register-register">Register Here</text>
+        <input ng-model="register.loginName" class="login-register-input" placeholder="Username" />
+        <input ng-model="register.password" class="login-register-input" placeholder="Password" type="password" />
+        <input ng-model="register.confirmPassword" class="login-register-input" placeholder="Confirm Password" type="password" />
+        <button ng-click="register()" class="login-register-button">Register</button>
+    </div>
+</div>

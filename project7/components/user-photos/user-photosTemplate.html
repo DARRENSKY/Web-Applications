@@ -10,5 +10,9 @@
             <text>
   {{ getDate(comment.date_time) }}</text>
         </div>
+        <div class="user-photos-new-comment-container">
+            <input ng-model="photos.newComments[$index]" placeholder="Add comment" class="user-photos-new-comment">
+            <button ng-click="addComment($index)" class="user-photos-add-comment">→</button>
+        </div>
     </div>
 </div>

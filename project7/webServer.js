@@ -135,7 +135,7 @@ app.get('/user/list', function (request, response) {
         return;
     }
 
-    User.find({}, function(err, users) {
+    User.find({}, function (err, users) {
         if (err) {
             console.log('Doing /user/list error:', err);
             response.status(400).send(JSON.stringify(err));
@@ -168,7 +168,7 @@ app.get('/user/:id', function (request, response) {
     }
 
     var id = request.params.id;
-    User.findById(id, function(err, user) {
+    User.findById(id, function (err, user) {
         if (err) {
             console.log('Doing /user/:id error:', err);
             response.status(400).send(JSON.stringify(err));
@@ -195,7 +195,7 @@ app.get('/photosOfUser/:id', function (request, response) {
     }
 
     var id = request.params.id;
-    Photo.find({ user_id: id }, async function(err, photos) {
+    Photo.find({ user_id: id }, async function (err, photos) {
         if (err) {
             console.log('Doing /photosOfUser/:id error:', err);
             response.status(400).send(JSON.stringify(err));
@@ -207,11 +207,11 @@ app.get('/photosOfUser/:id', function (request, response) {
             return;
         }
 
-        const photosArray = photos.map(async function(photo) {
+        const photosArray = photos.map(async function (photo) {
             photo = JSON.parse(JSON.stringify(photo));
-            const commentsArray = photo.comments.map(async function(comment) {
+            const commentsArray = photo.comments.map(async function (comment) {
                 comment = JSON.parse(JSON.stringify(comment));
-                await User.findById(comment.user_id, function(err, user) {
+                await User.findById(comment.user_id, function (err, user) {
                     if (err) {
                         console.log('Doing /photosOfUser/:id search comments error:', err);
                         response.status(400).send(JSON.stringify(err));
@@ -244,10 +244,10 @@ app.get('/photosOfUser/:id', function (request, response) {
 
 /*
  * URL /admin/login - Return 
-*/
+ */
 app.post('/admin/login', function (request, response) {
     var loginName = request.body.login_name;
-    User.findOne({login_name: loginName}, function(err, user) {
+    User.findOne({login_name: loginName}, function (err, user) {
         if (err) {
             console.log('Doing /admin/login error:', err);
             response.status(400).send(JSON.stringify(err));
@@ -269,7 +269,8 @@ app.post('/admin/login', function (request, response) {
 });
 
 /*
-*/
+ * 
+ */
 app.post('/admin/logout', function (request, response) {
     if (request.session.user) {
         request.session.user = null;
@@ -277,7 +278,33 @@ app.post('/admin/logout', function (request, response) {
     } else {
         response.status(400).send('Nobody currently logged in');
     }
-})
+});
+
+/*
+ * 
+ */
+app.post('/commentsOfPhoto/:photo_id', function (request, response) {
+    var photo_id = request.params.photo_id;
+    if (!request.body.comment) {
+        console.log('Doing /commentsOfPhoto/' + photo_id + ' error: empty comment');
+        response.status(400).send('Comment needs to be nonempty');
+        return;
+    }
+    var newComment = { 
+        comment: request.body.comment,
+        date_time: new Date(),
+        user_id: request.session.user._id,
+    };
+    Photo.findByIdAndUpdate(photo_id, { $push: {comments: newComment}}, function(err, result) {
+        if (err) {
+            console.log('Doing /commentsOfPhoto/' + photo_id + ' error:', err);
+            response.status(400).send(JSON.stringify(err));
+            return;
+        }
+        newComment.user = request.session.user;
+        response.status(200).send(newComment);
+    });
+});
 
 var server = app.listen(3000, function () {
     var port = server.address().port;

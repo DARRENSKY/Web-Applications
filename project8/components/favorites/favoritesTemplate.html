@@ -1,0 +1,13 @@
+<div class="favorites-container">
+    <div class="favorites-header-container">
+        <text>My Favorites</text>
+    </div>
+    <div ng-repeat="favorite in favorites.list" class="favorites-element-container">
+        <button ng-click="showModal(favorite)" class="favorites-modal-button">
+            <img ng-src="./images/{{favorite.file_name}}" class="favorites-thumbnail" />
+        </button>
+        <button ng-click="deleteFavorite(favorite)" class="favorites-delete-button">
+            <img src="./images/x.png" class="favorites-delete" />
+        </button>
+    </div>
+</div>

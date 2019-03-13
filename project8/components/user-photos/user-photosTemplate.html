@@ -1,0 +1,30 @@
+<div id="user-photos-container">
+    <div ng-repeat="photoObj in photos.list" class="user-photos-post">
+        <div class="user-photos-photo">
+            <img ng-src="./images/{{photoObj.photo.file_name}}"/>
+        </div>
+        <div class="user-photos-description">
+            <text>Posted: {{ getDate(photoObj.photo.date_time) }}</text>
+            <div ng-if="!photos.list[$index].favorited">
+                <button ng-click="favorite($index)" class="user-photos-favorite-button">
+                    <img src="./images/heart.png" class="user-photos-favorite-image" />
+                </button>
+            </div>
+            <div ng-if="photos.list[$index].favorited">
+                <button disabled class="user-photos-favorite-button">
+                    <img src="./images/red_heart.png" class="user-photos-favorite-image" />
+                </button>
+            </div>
+        </div>
+        <div ng-repeat="comment in photoObj.photo.comments" class="user-photos-comment">
+            <a ng-href="#!users/{{comment.user._id}}">{{ getUserName(comment) }}</a>
+            <text>{{ comment.comment }}</text>
+            <text>
+  {{ getDate(comment.date_time) }}</text>
+        </div>
+        <div class="user-photos-new-comment-container">
+            <input ng-model="photos.newComments[$index]" placeholder="Add comment" class="user-photos-new-comment">
+            <button ng-click="addComment($index)" class="user-photos-add-comment">→</button>
+        </div>
+    </div>
+</div>

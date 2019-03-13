@@ -1,0 +1,16 @@
+<div class="user-detail-container">
+    <div class="user-detail-header">
+        <div class="user-detail-photo-container">
+            <img ng-src="./images/{{userDetail.photo}}" class="user-detail-photo" />
+        </div>
+        <div class="user-detail-information-container">
+            <text>{{ userDetail.name }}</text>
+            <text>Location: {{ userDetail.location }}</text>
+            <text>Job: {{ userDetail.occupation }}</text>
+        </div>
+    </div>
+    <div class="user-detail-body">
+        <text>{{ userDetail.description }}</text>
+        <a class="user-detail-photo-button" ng-href="#!photos/{{userDetail.id}}">View Photos</a>
+    </div>
+</div>

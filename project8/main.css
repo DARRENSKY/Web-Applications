@@ -1,0 +1,93 @@
+.cs142-main-header-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 5px 0px 10px;
+    min-width: 400px;
+}
+
+.cs142-main-header-title-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+}
+
+.cs142-main-header-title-text > p {
+    margin: 0px;
+}
+
+.cs142-main-header-title-text > :first-child {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.cs142-main-header-title-text > :nth-child(2) {
+    font-size: 18px;
+    padding: 3px 0px 0px 5px;
+}
+
+.cs142-main-header-title-container > button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    font-size: 14px;
+    transition-duration: 0.3s;
+    padding: 5px 40px 2px 0px;
+    margin: 0px;
+}
+
+.cs142-main-header-title-container > button:hover {
+    opacity: 0.7;
+}
+
+.cs142-main-header-add-photo-container {
+    display: flex;
+    flex: 1.5;
+    justify-content: center;
+    align-items: center;
+}
+
+.cs142-main-header-add-photo-button {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: white;
+    cursor: pointer;
+    color: #313131;
+    transition-duration: 0.3s;
+}
+
+.cs142-main-header-add-photo-button:hover {
+    opacity: 0.7;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.cs142-main-header-add-photo-container > button {
+    color: white;
+    border: none;
+    background-color: transparent;
+    font-size: 26px;
+    font-weight: bold;
+    outline: none;
+    transition-duration: 0.3s;
+    padding: 2px 0px 0px 15px;
+}
+
+.cs142-main-header-add-photo-container > button:hover {
+    opacity: 0.7;
+}
+
+.cs142-main-header-view-container {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    margin-right: 20px;
+}

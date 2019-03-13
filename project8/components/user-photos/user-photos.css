@@ -1,0 +1,90 @@
+div {
+    font-family: Arial;
+    font-size: 18px;
+    color: #313131;
+}
+
+#user-photos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.user-photos-description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0px 18px 0px;
+}
+
+.user-photos-favorite-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.user-photos-favorite-image {
+    height: 20px;
+}
+
+.user-photos-post {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+    width: 600px;
+}
+
+.user-photos-photo > img {
+    height: 350px;
+}
+
+.user-photos-post > text {
+    margin: 20px 0px 20px 0px;
+}
+
+.user-photos-comment {
+    margin-bottom: 8px;
+}
+
+.user-photos-comment > a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #313131;
+    transition: 0.4s;
+}
+
+.user-photos-comment > a:hover {
+    color: #555555;
+}
+
+.user-photos-comment > text:nth-child(3) {
+    color: #6C6C6C;
+    font-size: 15px;
+    white-space: pre;
+}
+
+.user-photos-new-comment-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-photos-new-comment {
+    width: 90%;    
+    outline: none;
+}
+
+
+.user-photos-add-comment {
+    background-color: #3F51B5;
+    border: none;
+    transition-duration: 0.3s;
+    color: white;
+    font-weight: bold;
+}
+
+.user-photos-add-comment:hover {
+    opacity: 0.7;
+}

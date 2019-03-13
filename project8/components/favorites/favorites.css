@@ -1,0 +1,55 @@
+.favorites_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorites-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px 0px 0px 0px;
+}
+
+.favorites-header-container > text {
+    font-size: 24px;
+}
+
+.favorites-element-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 0px 10px 0px;
+}
+
+.favorites-modal-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    transition-duration: 0.3s;
+}
+
+.favorites-modal-button:hover {
+    opacity: 0.6;
+}
+
+.favorites-thumbnail {
+    height: 80px;
+}
+
+.favorites-delete-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-left: 30px;
+    transition-duration: 0.3s;
+}
+
+.favorites-delete-button:hover {
+    opacity: 0.6;
+}
+
+.favorites-delete {
+    height: 15px;
+}

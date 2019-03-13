@@ -1,0 +1,49 @@
+div {
+    font-family: Arial;
+    font-size: 20px;
+}
+
+#user-list-container {
+    padding-top: 30px;
+}
+
+.user-list-user { 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 0px 20px 0px;
+}
+
+.user-list-button {
+    color: #313131;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.user-list-button:hover {
+    color: #6C6C6C;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #ccc;  
+    margin: 20px 50px 40px 50px;
+}
+
+.user-list-favorites-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-list-favorites {
+    color: #313131;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.user-list-favorites:hover {
+    color: #6C6C6C;
+}

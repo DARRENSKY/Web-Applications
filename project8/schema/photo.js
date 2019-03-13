@@ -23,7 +23,8 @@ var photoSchema = new mongoose.Schema({
     file_name: String, // 	Name of a file containing the actual photo (in the directory project6/images).
     date_time: {type: Date, default: Date.now}, // 	The date and time when the photo was added to the database
     user_id: mongoose.Schema.Types.ObjectId, // The ID of the user who created the photo.
-    comments: [commentSchema] // Array of comment objects representing the comments made on this photo.
+    comments: [commentSchema], // Array of comment objects representing the comments made on this photo.
+    likes: [], // Array of user_ids that like this photo
 });
 
 // the schema is useless so far

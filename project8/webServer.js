@@ -443,6 +443,24 @@ app.post('/favorites/delete', function (request, response) {
     });
 });
 
+/*
+ *  URL /like - Return success if liked/unliked
+ */
+app.post('/like', function (request, response) {
+    let photoID = request.body.photoID;
+    let alreadyLiked = request.body.alreadyLiked;
+    let operation = alreadyLiked ? {$pull: { likes: request.session.user._id}} : {$addToSet: { likes: request.session.user._id }};
+    Photo.findByIdAndUpdate(photoID, operation, function (err, photo) {
+        if (err) {
+            console.log('Doing /like error: ', err); 
+            response.status(400).send(JSON.stringify(err));
+            return;
+        }
+        console.log(photo.likes);
+        response.status(200).send('Switched like status');
+    });
+});
+
 var server = app.listen(3000, function () {
     var port = server.address().port;
     console.log('Listening at http://localhost:' + port + ' exporting the directory ' + __dirname);

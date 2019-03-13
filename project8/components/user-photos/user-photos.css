@@ -88,3 +88,20 @@ div {
 .user-photos-add-comment:hover {
     opacity: 0.7;
 }
+
+.user-photos-text-container {
+    display: flex;
+    flex: 1;
+}
+
+.user-photos-buttons-container {
+    display: flex;
+    flex: 0.15;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+
+.user-photos-number-likes {
+    padding-top: 3px;
+    color: rgb(105, 105, 105);
+}

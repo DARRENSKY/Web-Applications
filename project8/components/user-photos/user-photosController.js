@@ -23,8 +23,21 @@ cs142App.controller('UserPhotosController', ['$scope', '$routeParams', '$resourc
     Photos.query({_id: userId}).$promise.then(function (photos) {
         for (let i = 0; i < photos.length; i++) {
             let favorited = $scope.main.loggedInUser.favorites.includes(photos[i]._id);
-            $scope.photos.list.push({ photo: photos[i], favorited: favorited });
+            let liked = photos[i].likes.includes($scope.main.loggedInUser._id);
+            let numLikes = photos[i].likes.length;
+            $scope.photos.list.push({
+                photo: photos[i], 
+                favorited: favorited, 
+                liked: liked,
+                numLikes: numLikes, 
+            });
         }
+        $scope.photos.list.sort(function (photoA, photoB) {
+            if (photoA.numLikes === photoB.numLikes) {
+                return photoA.photo.date_time < photoB.photo.date_time ? 1 : -1;
+            }
+            return photoB.numLikes - photoA.numLikes;
+        });
     }, function (err) {
         console.log(JSON.stringify(err));
     });
@@ -56,6 +69,17 @@ cs142App.controller('UserPhotosController', ['$scope', '$routeParams', '$resourc
         var Favorite = $resource('/favorites');
         Favorite.save({ photoID: $scope.photos.list[index].photo._id }).$promise.then(function (response) {
             $scope.photos.list[index].favorited = true;
+        }, function (err) {
+            console.log(JSON.stringify(err));
+        });
+    };
+
+    /* Likes a photo by adding current user's id to list of likes on photo */
+    $scope.like = function (index, alreadyLiked) {
+        var Like = $resource('/like');
+        Like.save({ photoID: $scope.photos.list[index].photo._id, alreadyLiked: alreadyLiked }).$promise.then(function (response) {
+            $scope.photos.list[index].liked = !$scope.photos.list[index].liked;
+            $scope.photos.list[index].numLikes += alreadyLiked ? -1 : 1; 
         }, function (err) {
             console.log(JSON.stringify(err));
         });

@@ -54,7 +54,7 @@
 
         <div class="container" flex layout="row">
             <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-                <div ng-if="main.loggedInUser" ng-include="'components/user-list/user-listTemplate.html'" ng-controller="UserListController"></div>
+                <div ng-hide="!main.loggedInUser" ng-include="'components/user-list/user-listTemplate.html'" ng-controller="UserListController"></div>
             </md-sidenav>
             <md-content flex id="content">
                 <div ng-view></div>

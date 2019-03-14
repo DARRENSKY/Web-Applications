@@ -258,7 +258,7 @@ app.get('/photosOfUser/:id', function (request, response) {
 app.post('/admin/login', function (request, response) {
     var loginName = request.body.login_name;
     var password = request.body.password;
-    User.findOne({login_name: loginName, password: password}, function (err, user) {
+    User.findOneAndUpdate({login_name: loginName, password: password}, {lastAction: {action: 'logged in'}}, function (err, user) {
         if (err) {
             console.log('Doing /admin/login error:', err);
             response.status(400).send(JSON.stringify(err));
@@ -275,6 +275,7 @@ app.post('/admin/login', function (request, response) {
         delete user.occupation;
         delete user.__v;
         delete user.password;
+        
         request.session.user = user;
         response.status(200).send(user);
     });
@@ -285,8 +286,15 @@ app.post('/admin/login', function (request, response) {
  */
 app.post('/admin/logout', function (request, response) {
     if (request.session.user) {
-        request.session.user = null;
-        response.status(200).send('Success');
+        User.findByIdAndUpdate(request.session.user._id, {lastAction: {action: 'logged out'}}, function (err, user) {
+            if (err) {
+                console.log('Doing /admin/logout error: ', err);
+                response.status(400).send(JSON.stringify(err));
+                return;
+            }
+            request.session.user = null;
+            response.status(200).send('Success');
+        });
     } else {
         response.status(400).send('Nobody currently logged in');
     }
@@ -317,7 +325,14 @@ app.post('/commentsOfPhoto/:photo_id', function (request, response) {
             return;
         }
         newComment.user = request.session.user;
-        response.status(200).send(newComment);
+        User.findByIdAndUpdate(request.session.user._id, {lastAction: {action: 'commented on a photo'}}, function (err, user) {
+            if (err) {
+                console.log('Doing /photos/new error: ', err);
+                response.status(400).send(JSON.stringify(err));
+                return;
+            }
+            response.status(200).send(newComment);
+        });
     });
 });
 
@@ -347,7 +362,14 @@ app.post('/photos/new', function (request, response) {
                     response.status(400).send(JSON.stringify(err));
                     return;
                 }
-                response.status(200).send("worked");
+                User.findByIdAndUpdate(request.session.user._id, {lastAction: {photo: './images/' + filename}}, function (err, user) {
+                    if (err) {
+                        console.log('Doing /photos/new error: ', err);
+                        response.status(400).send(JSON.stringify(err));
+                        return;
+                    }
+                    response.status(200).send('success');
+                });
             });
         });
     });
@@ -358,6 +380,7 @@ app.post('/photos/new', function (request, response) {
  */
 app.post('/user', function (request, response) {
     var newUser = request.body;
+    newUser.lastAction = {action: 'registered'};
     User.findOne({login_name: newUser.login_name}, function (err, user) {
         if (err) {
             console.log('Doing /admin/login error:', err);
@@ -375,7 +398,7 @@ app.post('/user', function (request, response) {
                 response.status(400).send(JSON.stringify(err));
                 return;
             }
-            response.status(200).send('success');
+            response.status(200).send(user);
         });
     });
 });
@@ -456,7 +479,6 @@ app.post('/like', function (request, response) {
             response.status(400).send(JSON.stringify(err));
             return;
         }
-        console.log(photo.likes);
         response.status(200).send('Switched like status');
     });
 });

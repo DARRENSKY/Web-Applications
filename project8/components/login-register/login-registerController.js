@@ -36,6 +36,7 @@ cs142App.controller('LoginRegisterController', ['$scope', '$resource', '$locatio
         }).$promise.then(function (loggedInUser) {
             $scope.main.loggedInUser = loggedInUser;
             $scope.main.message = 'Hi ' + loggedInUser.first_name; 
+            $scope.main.updateRecentActivity(loggedInUser._id, {action: 'logged in'});
             $location.path('/users/' + loggedInUser._id);
         }, function (err) {
             console.log(JSON.stringify(err));
@@ -70,7 +71,7 @@ cs142App.controller('LoginRegisterController', ['$scope', '$resource', '$locatio
             description: $scope.register.description ? $scope.register.description : '',
             occupation: $scope.register.occupation ? $scope.register.occupation : '',
             password: $scope.register.password,
-        }).$promise.then(function (response) {
+        }).$promise.then(function (user) {
             $scope.register.firstName = '';
             $scope.register.lastName = '';
             $scope.register.loginName = '';
@@ -79,6 +80,7 @@ cs142App.controller('LoginRegisterController', ['$scope', '$resource', '$locatio
             $scope.register.occupation = '';
             $scope.register.password = '';
             $scope.register.confirmPassword = '';
+            $scope.main.updateRecentActivity(user._id);
             alert('Successfully created account');
         }, function (err) {
             console.log(JSON.stringify(err));

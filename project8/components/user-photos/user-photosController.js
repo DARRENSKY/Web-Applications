@@ -54,10 +54,11 @@ cs142App.controller('UserPhotosController', ['$scope', '$routeParams', '$resourc
 
     /* Adds comment to photo, written by logged in user. */
     $scope.addComment = function (index) {
-        var Comment = $resource('/commentsOfPhoto/' + $scope.photos.list[index]._id);
+        var Comment = $resource('/commentsOfPhoto/' + $scope.photos.list[index].photo._id);
         Comment.save({ comment: $scope.photos.newComments[index] }).$promise.then(function (comment) {
-            $scope.photos.list[index].comments.push(comment); 
+            $scope.photos.list[index].photo.comments.push(comment); 
             $scope.photos.newComments[index] = '';
+            $scope.main.updateRecentActivity($scope.main.loggedInUser._id, {action: 'commented on a photo'});
         }, function (err) {
             console.log(JSON.stringify(err));
             alert('Comment needs to be nonempty');

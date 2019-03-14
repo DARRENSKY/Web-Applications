@@ -47,3 +47,17 @@ hr {
 .user-list-favorites:hover {
     color: #6C6C6C;
 }
+
+.user-list-recent-activity-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-list-recent-activity-container > text {
+    font-size: 12px;
+}
+.user-list-thumbnail {
+    height: 20px;
+    margin-left: 10px;
+}
